@@ -1,0 +1,55 @@
+{% extends 'main/base.html' %}
+{% load custom_filters %}
+
+
+
+
+
+
+{% block main %}
+    <section class="products">
+        {% for product in products %}
+            <article class="product">
+                <a href="{% url 'product' product.slug %}">
+                    <div class="img">
+                        {% if product.image %}  
+                            <img src="{{ product.image.url }}" alt="">
+                        {% endif %}
+                    </div>
+                    <div class="title">{{ product.name }}</div>
+                    <ul class="size">
+                        {% if products_sizes|get_data_by_id:product %}
+                            
+                            {% for product_size in products_sizes|get_data_by_id:product %}
+                                <li>{{ product_size.size.name }}</li>
+                            {% endfor %}
+
+                        {% else %}
+                            <li>Нет размеров</li>
+                        {% endif %}
+                    </ul>
+                    <div class="price">{{ product.price }}</div>
+                </a>
+            </article>
+        {% endfor %}
+    </section>
+{% endblock main %}
+
+    
+    
+
+    
+
+
+
+    {% if basket %}
+        <p>Корзина:</p>
+        <ul>
+            {% for basket_item in basket %}
+                <li>{{ basket_item }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    
+    
+    

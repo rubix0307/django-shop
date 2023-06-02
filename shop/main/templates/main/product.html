@@ -1,0 +1,52 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% load custom_filters %}
+
+{% block header %}
+{% endblock header %}
+
+{% block main %}
+    <section class="product">
+        <div class="row">
+            <div class="img">
+                <img src="{{ product.image.url }}" alt="">
+            </div>
+
+            <div class="data">
+                <ul class="breads">
+                    <li><a href="{% url 'home' %}">Главная</a></li>
+                    <li><a href="{% url 'category_view' product.category.slug %}">{{ product.category }}</a></li>
+                    
+                    {% if product.subcategory %}
+                        <li><a href="{% url 'subcategory_view' product.category.slug product.subcategory.slug %}">{{ product.subcategory }}</a></li>
+                    {% endif %}  
+                </ul>
+
+                <div class="title">{{ product.name }}</div>
+                <div class="price">{{ product.price }} UAH</div>
+
+                <ul class="size">
+                    {% if product_sizes %}
+                        {% for ps in product_sizes %}
+                            <li data-href="{% url 'basket_update' 'get' product.id %}">{{ ps.size.name }}</li>
+                        {% endfor %}
+                    {% else %}
+                        <p>Нет размеров</p>
+                    {% endif %}
+                </ul>
+                {% include 'products\inc\basket-btns.html' %}
+                <script src="{% static 'js/main.js' %}"></script>
+                <script src="{% static 'js/basket_update.js' %}"></script>
+
+            </div>
+        </div>
+        {% if product.description %}
+            <div class="description">
+                <div class="description-title">ОПИСАНИЕ</div>
+                <div class="text">{{ product.description|linebreaksbr }}</div>
+            </div> 
+        {% endif %}
+        
+    </section>
+    
+{% endblock main %}

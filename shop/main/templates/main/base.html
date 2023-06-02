@@ -1,0 +1,38 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Document</title>
+</head>
+<body>
+
+
+{% block header %}
+
+    <ul class="main_nav">
+        <li><a href="{% url 'home' %}">Главная</a></li>
+        {% for category in categories %}
+            <li><a href="{% url 'category_view' category.slug %}">{{ category.name }}</a>
+                {% if category.categorysub_set.all %}
+                    <ul>
+                        {% for subcategory in category.categorysub_set.all %}
+                            <li><a href="{% url 'subcategory_view' category.slug subcategory.slug %}">{{ subcategory.name }}</a></li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock header %}
+
+<main>
+    {% block main %}{% endblock main %}
+</main>
+    
+</body>
+</html>

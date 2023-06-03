@@ -204,7 +204,7 @@ section.product .data .size li.active{
 }
 
 
-section.product .data .basket-btns{
+section .data .basket-btns{
     display: flex;
     justify-content: space-between;
     margin: 10px 0;
@@ -212,28 +212,28 @@ section.product .data .basket-btns{
     padding: 5px 0;
     color: white;
 }
-section.product .data .basket-btns a{
+section .data .basket-btns a{
     color: white;
 }
 
-section.product .data .basket-btns .remove,
-section.product .data .basket-btns .data,
-section.product .data .basket-btns .add {
+section .data .basket-btns .remove,
+section .data .basket-btns .data,
+section .data .basket-btns .add {
     background-color: rgb(0, 94, 15);
     padding: 5px;
     flex: 1;   
 }
-section.product .data .basket-btns .remove:hover,
-section.product .data .basket-btns .data:hover,
-section.product .data .basket-btns .add:hover {
+section .data .basket-btns .remove:hover,
+section .data .basket-btns .data:hover,
+section .data .basket-btns .add:hover {
     background-color: rgb(0, 100, 15);
 }
-section.product .data .basket-btns .remove.no-active,
-section.product .data .basket-btns .data.no-active,
-section.product .data .basket-btns .add.no-active {
+section .data .basket-btns .remove.no-active,
+section .data .basket-btns .data.no-active,
+section .data .basket-btns .add.no-active {
     color: #737373;   
 }
-section.product .data .basket-btns .data {
+section .data .basket-btns .data {
     flex: 2;
 /*     margin: 0 2px */
 }
@@ -251,6 +251,103 @@ section.product .description-title {
 section.product .description .text {
     font-size: 16px;
 }
+
+
+
+
+section.basket {
+    width: 100%;
+    margin: 0 auto;
+}
+
+section.basket .img{
+    max-width: 100px;
+    overflow: hidden;
+}
+section.basket img{
+    max-width: 100px;
+    width: 110%;
+    height: 110%;
+    object-fit: cover; /* This will make the image cover the whole .img block */
+    transition: 0.3s;
+}
+
+section.basket .basket_items{
+    width: 100%;
+}
+section.basket .basket_items .basket_item{
+    display: flex;
+}
+section.basket .basket_items .basket_item{
+    display: flex;
+    margin-top: 15px;
+    
+/*     background-color: #d5d5d5; */
+}
+section.basket .basket_items .basket_item .img{
+    margin-right: 15px;
+}
+section.basket .basket_items .basket_item .data{
+    width: min(100%, 300px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+}
+section.basket .basket_items .basket_item .data .title a{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    min-height: 20px
+}
+section.basket .basket_items .basket_item .data .title .size{
+    margin: 0 5px;
+}
+section.basket .basket_items .basket_item .data .title .size li {
+    padding: 0;
+}
+
+section.basket .basket_items .basket_item .data .basket-btns{
+    margin: 0;
+    padding: 0;
+}
+
+
+.price {
+    display: flex;
+    flex-direction: column;
+    margin: 5px 0;
+}
+.price .for_one,
+.price .for_many
+{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.price .currency{
+    margin-left: 5px;
+    font-size: 10px;
+
+    display: flex;
+
+}
+.price .per_count{
+    font-size: 8px;
+
+    display: flex;
+    align-items: center;
+}
+
+
+
+
+
+
+
+
 
 
 

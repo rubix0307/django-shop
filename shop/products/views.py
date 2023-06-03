@@ -48,41 +48,7 @@ def product_view(request: WSGIRequest, product_slug:str):
 
 
 
-def basket_update(request: WSGIRequest, action: str, product_id: int):
-    user = request.user
 
-    size = request.GET.get('size', None)
-    
-    product = Product.objects.get(id=product_id)
-    size = Size.objects.get(name=size)
-    product_size = ProductSize.objects.get(product=product, size=size)
-
-    basket, created = Basket.objects.get_or_create(user=user)
-    basket_item, created = BasketItem.objects.get_or_create(basket=basket, product_size=product_size, defaults={'quantity': 0})
-    
-    if action == 'remove':
-        if basket_item.quantity:
-            basket_item.quantity -= 1
-    elif action == 'add':
-        basket_item.quantity += 1
-
-    if basket_item.product_size.quantity < basket_item.quantity:
-        basket_item.quantity = basket_item.product_size.quantity
-
-    
-    basket_item.save()
-
-    product_sizes = ProductSize.objects.filter(product=product)
-
-    context = {
-        'categories': Category.objects.all(),
-        'product': product,
-        'product_sizes': product_sizes,
-
-        'basket_item': basket_item,
-    }
-
-    return render(request, 'products\product.html', context=context)
 
 
 

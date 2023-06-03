@@ -9,5 +9,10 @@ def get_data_by_id(y_dict, y_object, *args, **kwargs):
 
 
 
-
+@register.filter
+def multiply(value, arg):
+    try:
+        return int(value) * int(arg)
+    except (ValueError, TypeError):
+        return ''
 

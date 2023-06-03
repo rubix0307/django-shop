@@ -19,5 +19,6 @@ from django.urls import path
 from baskets import views
 
 urlpatterns = [
-    path('basket_update/<str:action>:<int:product_id>', views.basket_update, name='basket_update'),
+    path('', views.basket_view, name='basket'),
+    path('update/<str:action>:<int:product_id>', views.basket_update, name='basket_update'),
 ]

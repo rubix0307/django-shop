@@ -1,0 +1,38 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+
+{% block main %}
+    <section class="basket">
+        <h1>{{ title }}</h1>
+        <ul class="basket_items">
+            {% for basket_item in basket_items %}
+                {% with product=basket_item.product_size.product %}
+                    
+                        <li class="basket_item">
+                            
+                            <div class="img">
+                                <a href="{% url 'product' product.slug %}"><img src="{{ product.image.url }}" alt=""></a>
+                            </div>
+                            <div class="data">
+                                <div>
+                                    <div class="title">
+                                        <a href="{% url 'product' product.slug %}">{{ product.name }} 
+                                            [<ul class="size">
+                                                <li class="active">{{ basket_item.product_size.size.name }}</li>
+                                            </ul>]
+                                        </a>
+                                    </div>
+
+                                </div>
+                                {% include 'products\inc\basket-btns.html' %}
+                            </div>
+                        </li>
+                {% endwith %}
+            {% endfor %}
+        </ul>
+    </section>
+
+    <script src="{% static 'js/main.js' %}"></script>
+    <script src="{% static 'js/basket_update.js' %}"></script>
+{% endblock main %}

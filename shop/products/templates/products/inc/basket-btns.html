@@ -1,21 +1,36 @@
-
+{% load custom_filters %}
 
 {% if basket_item.quantity %}
-    <div class="basket-btns no-select">
-        <div class="remove no-select ajax-link" data-href="{% url 'basket_update' 'remove' product.id %}">-</div>
-        <div class="data no-select ajax-link">В корзине: {{ basket_item.quantity }}</div>
-
-        <div class="add no-select
-            {% if basket_item.product_size.quantity > basket_item.quantity %}
-                ajax-link
-            {% else %}
-                no-active
+    <div class="basket-btns-data">
+        <div class="price">
+            <div class="for_one">Цена: {{ product.price }} <div class="currency">UAH</div><div class="per_count">/шт</div></div>
+            {% if basket_item.quantity > 1 %}
+                <div class="for_many">Всего: {{ product.price|multiply:basket_item.quantity }} <div class="currency">UAH</div></div>
             {% endif %}
-        " data-href="{% url 'basket_update' 'add' product.id %}">+</div>
+                
+        </div>
+        <div class="basket-btns no-select">
+            <div class="remove no-select ajax-link" data-href="{% url 'basket_update' 'remove' product.id %}">-</div>
+            <div class="data no-select ajax-link"><a href="{% url 'basket' %}"> В корзине: {{ basket_item.quantity }}</a></div>
+
+            <div class="add no-select
+                {% if basket_item.product_size.quantity > basket_item.quantity %}
+                    ajax-link
+                {% else %}
+                    no-active
+                {% endif %}
+            " data-href="{% url 'basket_update' 'add' product.id %}">+</div>
+        </div>
     </div>
 {% else %}
-    <div class="basket-btns no-select">
-        <div class="data no-select ajax-link" data-href="{% url 'basket_update' 'add' product.id %}">Добавить в корзину</div>
+    <div class="basket-btns-data">
+
+        <div class="price">
+            <div class="for_one">Цена: {{ product.price }} <div class="currency">UAH</div><div class="per_count">/шт</div></div>
+        </div>
+        <div class="basket-btns no-select">
+            <div class="data no-select ajax-link" data-href="{% url 'basket_update' 'add' product.id %}">Добавить в корзину</div>
+        </div>
     </div>
 {% endif %}
 

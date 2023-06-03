@@ -74,9 +74,9 @@ function sendAjaxRequest(href, activeText) {
             var doc = parser.parseFromString(response, 'text/html');
 
             // Находим объект .basket-btns в полученном документе
-            var basketBtns = doc.querySelector('.basket-btns');
+            var basketBtns = doc.querySelector('.basket-btns-data');
 
-            var basketBtnsElement = document.querySelector('.basket-btns');
+            var basketBtnsElement = document.querySelector('.basket-btns-data');
             basketBtnsElement.replaceWith(basketBtns);
         } else {
             // Обработка ошибок или других статусов ответа

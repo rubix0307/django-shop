@@ -54,7 +54,7 @@ section.products .product a{
 
 section.products .product .img {
     width: 100%;
-    max-height: 75%;
+    max-height: 337px;
     overflow: hidden;
     display: flex;
     justify-content: center;
@@ -72,8 +72,8 @@ section.products .product .img img {
 }
 
 section.products .product .img:hover img {
-    width: 125%;
-    height: 125%;
+    width: 155%;
+    height: 155%;
     
 }
 

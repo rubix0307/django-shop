@@ -28,7 +28,7 @@
                 <ul class="size">
                     {% if product_sizes %}
                         {% for ps in product_sizes %}
-                            <li data-href="{% url 'basket_update' 'get' product.id %}">{{ ps.size.name }}</li>
+                            <li class="no-select" data-href="{% url 'basket_update' 'get' product.id %}">{{ ps.size.name }}</li>
                         {% endfor %}
                     {% else %}
                         <p>Нет размеров</p>

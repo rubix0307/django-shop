@@ -18,6 +18,7 @@ def category_view(request: WSGIRequest, category_slug, subcategory_slug=None):
     products_sizes = {product.id: ProductSize.objects.filter(product=product) for product in products}
 
     context = {
+        'title': category.name,
         'categories': Category.objects.all(),
         'category': category,
         'subcategory': subcategory,
@@ -37,6 +38,7 @@ def product_view(request: WSGIRequest, product_slug:str):
     product_sizes = ProductSize.objects.filter(product=product)
 
     context = {
+        'title': product.name,
         'categories': Category.objects.all(),
         'product': product,
         'product_sizes': product_sizes,

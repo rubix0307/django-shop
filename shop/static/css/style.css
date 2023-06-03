@@ -223,6 +223,11 @@ section.product .data .basket-btns .add {
     padding: 5px;
     flex: 1;   
 }
+section.product .data .basket-btns .remove:hover,
+section.product .data .basket-btns .data:hover,
+section.product .data .basket-btns .add:hover {
+    background-color: rgb(0, 100, 15);
+}
 section.product .data .basket-btns .remove.no-active,
 section.product .data .basket-btns .data.no-active,
 section.product .data .basket-btns .add.no-active {

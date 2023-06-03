@@ -19,6 +19,7 @@ def home(request: WSGIRequest):
     products = Product.objects.all()
     products_sizes = {product.id: ProductSize.objects.filter(product=product) for product in products}
     context = {
+        'title': 'Главная страница',
         # 'basket': basket_items,
         'categories': Category.objects.all(),
         'products': products,
